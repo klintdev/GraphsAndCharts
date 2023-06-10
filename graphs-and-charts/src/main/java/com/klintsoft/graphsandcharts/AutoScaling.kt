@@ -46,7 +46,6 @@ fun autoScale(axisValues: List<Float>, dimensionPx: Int, fontWidth: Float): List
 
 fun Double.isInteger(): Boolean{
     val rem = abs(this.rem(1))
-    //Log.i("MyInfo", "isInteger: rem : $rem, rem - 0 :${rem - 0.0}")
     return rem.equals(0.0)
 }
 
