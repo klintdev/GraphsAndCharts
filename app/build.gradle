@@ -47,6 +47,8 @@ android {
 }
 
 dependencies {
+    //To include the "graphs-and-charts" local library that belongs to the same project
+    implementation project(':graphs-and-charts')
 
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
