@@ -48,15 +48,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'*/
 }
 
-afterEvaluate { //Configuration for github sharing
-    publishing {
+afterEvaluate {
+    publishing {    //Configuration for github sharing
         publications {
             release(MavenPublication) {
                 from components.release
-
-                groupId = 'com.github.mikaelgots'
-                artifactId = 'graphs-and-charts'
-                version = '1.0'
+                groupId = 'com.github.mikaelgot' //git id
+                artifactId = 'graphs-and-charts' //name of repository
+                version = '1.0.1'   //same as the tag
             }
         }
     }
