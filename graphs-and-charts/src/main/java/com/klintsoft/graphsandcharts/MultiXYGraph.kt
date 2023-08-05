@@ -45,8 +45,6 @@ fun MultiXYGraph(
     scaleColor: Color = MaterialTheme.colors.onBackground,
     scaleTextStyle: TextStyle = MaterialTheme.typography.caption,
     labelTextStyle: TextStyle = MaterialTheme.typography.caption,
-    showBorder: Boolean = false,
-    borderWidth: Dp = 1.dp,
     showLegend: Boolean = true,
     legendTextStyle: TextStyle = MaterialTheme.typography.caption,
 ) {
