@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalTextApi::class)
@@ -44,6 +45,8 @@ fun MultiXYGraph(
     scaleColor: Color = MaterialTheme.colors.onBackground,
     scaleTextStyle: TextStyle = MaterialTheme.typography.caption,
     labelTextStyle: TextStyle = MaterialTheme.typography.caption,
+    showBorder: Boolean = false,
+    borderWidth: Dp = 1.dp,
     showLegend: Boolean = true,
     legendTextStyle: TextStyle = MaterialTheme.typography.caption,
 ) {
@@ -68,7 +71,6 @@ fun MultiXYGraph(
 
     Column(
         modifier = modifier.background(color = backgroundColor)
-            .border(1.dp, color = Color.Black)
 
     ) {
         if(title.isNotEmpty()) {
