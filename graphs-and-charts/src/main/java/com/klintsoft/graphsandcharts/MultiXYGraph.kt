@@ -335,7 +335,10 @@ fun MultiXYGraph(
                         modifier = Modifier
                             .weight(0.1f)
                             .padding(horizontal = 8.dp),
-                        color = graph.lineColor,
+                        color =
+                        if(graph.showLine) graph.lineColor
+                        else if(graph.showPoints) graph.pointColor
+                        else Color.Transparent,
                         thickness = 4.dp
                     )
                     Text(
