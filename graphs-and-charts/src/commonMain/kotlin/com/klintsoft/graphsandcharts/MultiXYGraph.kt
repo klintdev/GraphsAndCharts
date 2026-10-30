@@ -1,7 +1,8 @@
 package com.klintsoft.graphsandcharts
 
-import android.graphics.PointF
-import android.util.Log
+//import android.graphics.PointF
+//import android.util.Log
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -12,7 +13,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -105,7 +105,7 @@ fun MultiXYGraph(
                     fontWidth
                 )
             }
-            Log.i("MyInfo", "MultiXYGraph: scaleY: $scaleY")
+            //.i("MyInfo", "MultiXYGraph: scaleY: $scaleY")
 
             val maxYScaleTextWidth = scaleY.maxOfOrNull {
                 textMeasurer.measure(
@@ -153,15 +153,15 @@ fun MultiXYGraph(
 
             /** Create each graph one by one on the canvas **/
             graphs.forEach { graph ->
-                val coordinates = mutableListOf<PointF>()
-                val controlPoints1 = mutableListOf<PointF>()
-                val controlPoints2 = mutableListOf<PointF>()
+                val coordinates = mutableListOf<Offset>()
+                val controlPoints1 = mutableListOf<Offset>()
+                val controlPoints2 = mutableListOf<Offset>()
 
                 /** Draw points **/
                 for (point in graph.points) {
                     val x1 = xGraphStart + (point.x - minX) * xMultiplier
                     val y1 = (maxY - point.y) * yMultiplier
-                    coordinates.add(PointF(x1, y1))
+                    coordinates.add(Offset(x1, y1))
                     if (graph.showPoints) {
                         drawCircle(
                             color = graph.pointColor,
@@ -175,13 +175,13 @@ fun MultiXYGraph(
                         /** calculating the Bicubic Bezier control points */
                         for (i in 1 until coordinates.size) {
                             controlPoints1.add(
-                                PointF(
+                                Offset(
                                     (coordinates[i].x + coordinates[i - 1].x) / 2,
                                     coordinates[i - 1].y
                                 )
                             )
                             controlPoints2.add(
-                                PointF(
+                                Offset(
                                     (coordinates[i].x + coordinates[i - 1].x) / 2,
                                     coordinates[i].y
                                 )

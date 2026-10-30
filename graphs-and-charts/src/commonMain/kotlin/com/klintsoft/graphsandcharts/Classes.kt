@@ -1,12 +1,13 @@
 package com.klintsoft.graphsandcharts
 
-import android.graphics.PointF
+//import android.graphics.PointF
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 data class XYGraph(
-    val points: List<PointF>,
+    val points: List<Offset>,
     val description: String = "",
     val showLine: Boolean = true,
     val showPoints: Boolean = true,

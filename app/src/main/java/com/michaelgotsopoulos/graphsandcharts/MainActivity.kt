@@ -1,6 +1,7 @@
 package com.michaelgotsopoulos.graphsandcharts
 
-import android.graphics.PointF
+//import android.graphics.Offset
+import androidx.compose.ui.geometry.Offset
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -32,14 +33,14 @@ class MainActivity : ComponentActivity() {
 
 val xList = List(10){ (it * 0.041).toFloat() }
 val yList = List(10) { ((it * (-2 * it ) + 21.5) ).toFloat() }
-val points0 = xList.mapIndexed { index, it -> PointF(it, yList[index])  }
+val points0 = xList.mapIndexed { index, it -> Offset(it, yList[index])  }
 
 
 val yList1 = List(10) { (Random.nextInt(200) - 100 ).toFloat() }
-val points1 = xList.mapIndexed { index, it -> PointF(it, yList1[index])  }
+val points1 = xList.mapIndexed { index, it -> Offset(it, yList1[index])  }
 
 val yList2 = List(10) { (Random.nextInt(100) - 84 ).toFloat() }
-val points2 = xList.mapIndexed { index, it -> PointF(it, yList2[index])  }
+val points2 = xList.mapIndexed { index, it -> Offset(it, yList2[index])  }
 
 val graph = XYGraph(points = points0, pointColor = Color.Cyan, lineColor = Color.Cyan, description = "Blue line")
 val graph1 = XYGraph(points = points1, pointColor = Color.Green, lineColor = Color.Green, pointSize = 4.dp, showPoints = false, curveStyle = CurveStyle.BICUBIC)
