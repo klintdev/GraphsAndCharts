@@ -1,7 +1,8 @@
 package com.klintsoft.graphsandcharts
 
-import android.graphics.PointF
-import android.util.Log
+//import android.graphics.Offset
+//import android.util.Log
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -11,7 +12,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -33,7 +33,7 @@ import kotlin.math.sqrt
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun XYGraph(
-    points: List<PointF>,
+    points: List<Offset>,
     modifier: Modifier = Modifier,
     title: String = "",
     unitsX: String = "",
@@ -97,7 +97,7 @@ fun XYGraph(
                 .pointerInput(Unit) {
                     detectTapGestures { offset ->
                         tapOffset = offset
-                        Log.i("MyInfo", "TAP @ offset: $offset")
+                        //Log.i("MyInfo", "TAP @ offset: $offset")
                     }
                 }
         )
@@ -154,9 +154,9 @@ fun XYGraph(
                 5f
             )
 
-            val coordinates = mutableListOf<PointF>()
-            val controlPoints1 = mutableListOf<PointF>()
-            val controlPoints2 = mutableListOf<PointF>()
+            val coordinates = mutableListOf<Offset>()
+            val controlPoints1 = mutableListOf<Offset>()
+            val controlPoints2 = mutableListOf<Offset>()
 
 
             //Adjust point values to Canvas Offset values
@@ -171,7 +171,7 @@ fun XYGraph(
 
             /** Draw points **/
             pointsInCanvas.forEachIndexed {index, point ->
-                coordinates.add(PointF(point.x, point.y))
+                coordinates.add(Offset(point.x, point.y))
                 val radius = if (index == indexOfTapped) pointSize.toPx() * 2 else pointSize.toPx()
                 if (showPoints) {
                     drawCircle(
@@ -186,13 +186,13 @@ fun XYGraph(
                     /** calculating the Bicubic Bezier control points */
                     for (i in 1 until coordinates.size) {
                         controlPoints1.add(
-                            PointF(
+                            Offset(
                                 (coordinates[i].x + coordinates[i - 1].x) / 2,
                                 coordinates[i - 1].y
                             )
                         )
                         controlPoints2.add(
-                            PointF(
+                            Offset(
                                 (coordinates[i].x + coordinates[i - 1].x) / 2,
                                 coordinates[i].y
                             )
@@ -325,7 +325,7 @@ fun XYGraph(
                 )
                 val newX = rect.center.x - measuredYLabel.size.width / 2
                 val newY = (size.height - size.width) / 2
-                Log.i("MyInfo", "size: width ${size.width}, height ${size.height}")
+                //Log.i("MyInfo", "size: width ${size.width}, height ${size.height}")
                 rotate(-90f, pivot = rect.center) {
                     drawText(
                         measuredYLabel,
@@ -369,9 +369,9 @@ fun XYGraph(
                         graphHeight / 2f + measuredInfoText.size.height * 0.1f
                     )
                 )
-                Log.i("MyInfo", "indexOfTapped: $indexOfTapped, distance: ${distance(pointsInCanvas[indexOfTapped], tapOffset)}")
+                //Log.i("MyInfo", "indexOfTapped: $indexOfTapped, distance: ${distance(pointsInCanvas[indexOfTapped], tapOffset)}")
             }
-            else Log.i("MyInfo", "indexOfTapped: NULL")
+            else {} //Log.i("MyInfo", "indexOfTapped: NULL")
         }
     }
 }
