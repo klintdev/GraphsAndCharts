@@ -11,8 +11,8 @@ kotlin {
     sourceSets {
         jvmMain {
             dependencies {
-                //implementation project(':graphs-and-charts')
-                implementation 'com.github.klintdev:graphs-and-charts:1.1.0'
+                implementation project(':graphs-and-charts')
+                //implementation 'com.github.klintdev:graphs-and-charts:1.1.0'
 
                 implementation compose.desktop.currentOs
                 implementation compose.runtime
